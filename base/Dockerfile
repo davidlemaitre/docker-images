@@ -1,5 +1,5 @@
 FROM debian:wheezy
-MAINTAINER David Lemaitre <dlemaitre@ausy-group.com>
+MAINTAINER David Lemaitre
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		locales \
