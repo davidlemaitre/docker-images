@@ -22,10 +22,10 @@ RUN apk add --no-cache \
 
 # Install Node packages
 RUN npm install -g \
-  gulp@"$GULP_VERSION" \
-  bower@"$BOWER_VERSION" \
-  modernizr@"$MODERNIZR_VERSION" \
-  browser-sync@"$BROWSERSYNC_VERSION"
+    gulp@"$GULP_VERSION" \
+    bower@"$BOWER_VERSION" \
+    modernizr@"$MODERNIZR_VERSION" \
+    browser-sync@"$BROWSERSYNC_VERSION"
 
 # Allow running bower as root
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
