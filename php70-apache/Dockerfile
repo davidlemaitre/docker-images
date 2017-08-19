@@ -6,6 +6,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     imagemagick \
     mysql-client \
     locales \
+    libxml2-dev \
+    libicu-dev \
+    libmcrypt-dev \
+    libpng-dev \
+    libcurl4-gnutls-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
