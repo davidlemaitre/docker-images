@@ -29,3 +29,7 @@ RUN pip install glue=="$GLUE_VERSION"
 
 # Allow running bower as root
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
+
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
