@@ -1,16 +1,22 @@
 FROM php:7.0.25-apache
-MAINTAINER David Lemaitre
+LABEL maintainer="David Lemaitre"
 
 # Install dependencies
+RUN echo "deb http://deb.debian.org/debian stretch main" > /etc/apt/sources.list.d/stretch.list
 RUN apt-get update && apt-get install -y --no-install-recommends \
     imagemagick \
     mysql-client \
     locales \
     libxml2-dev \
-    libicu-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
     libmcrypt-dev \
     libpng-dev \
+    zlib1g-dev \
+    libicu-dev \
     libcurl4-gnutls-dev \
+# Fix outdated PCRE bug in Debian 8
+    && apt-get install -y -t stretch libpcre3 libpcre3-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -34,6 +40,7 @@ RUN dpkg-reconfigure locales && \
 RUN echo 'fr_FR.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
 
 # Install PHP extensions
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN docker-php-ext-install \
     mysqli \
     pdo \
@@ -46,6 +53,12 @@ RUN docker-php-ext-install \
     zip \
     curl \
     json
+
+RUN echo "always_populate_raw_post_data = -1" >> $PHP_INI_DIR/conf.d/php.ini
+RUN echo "max_execution_time = 240" >> $PHP_INI_DIR/conf.d/php.ini
+RUN echo "max_input_vars = 1500" >> $PHP_INI_DIR/conf.d/php.ini
+RUN echo "upload_max_filesize = 32M" >> $PHP_INI_DIR/conf.d/php.ini
+RUN echo "post_max_size = 32M" >> $PHP_INI_DIR/conf.d/php.ini
 
 # Export ports
 EXPOSE 443
