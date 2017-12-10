@@ -1,4 +1,4 @@
-FROM php:7.0.25-apache
+FROM php:7.0.26-apache
 LABEL maintainer="David Lemaitre"
 
 # Install dependencies
