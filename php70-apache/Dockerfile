@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     zlib1g-dev \
     libicu-dev \
     libcurl4-gnutls-dev \
+    libxslt-dev \
 # Fix outdated PCRE bug in Debian 8
     && apt-get install -y -t stretch libpcre3 libpcre3-dev \
     && apt-get clean \
@@ -25,9 +26,6 @@ RUN a2enmod rewrite alias headers expires
 
 # Enable SSL
 RUN a2enmod ssl && a2ensite default-ssl
-
-# Set default ServerName
-#RUN echo "ServerName localhost" > /etc/apache2/conf.d/fqdn.conf
 
 # Set timezone
 RUN echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
@@ -52,7 +50,8 @@ RUN docker-php-ext-install \
     mbstring \
     zip \
     curl \
-    json
+    json \
+    xsl
 
 RUN echo "always_populate_raw_post_data = -1" >> $PHP_INI_DIR/conf.d/php.ini
 RUN echo "max_execution_time = 240" >> $PHP_INI_DIR/conf.d/php.ini
