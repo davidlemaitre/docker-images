@@ -5,8 +5,6 @@ ENV GULPCLI_VERSION 1.4.0
 ENV MODERNIZR_VERSION 3.5.0
 ENV BROWSERSYNC_VERSION 2.18.13
 
-ENV NPM_CONFIG_LOGLEVEL warn
-
 # Install requirements
 RUN apk add --no-cache \
     git \
