@@ -33,7 +33,7 @@ RUN a2enmod ssl && a2ensite default-ssl
 RUN echo ServerName $HOSTNAME > /etc/apache2/conf.d/fqdn
 
 # Default working directory
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 # Expose ports
 EXPOSE 80 443
