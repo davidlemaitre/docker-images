@@ -1,4 +1,4 @@
-FROM debian:wheezy
+FROM debian:wheezy-20180213
 MAINTAINER David Lemaitre
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
