@@ -1,4 +1,4 @@
-FROM davidlemaitre/base
+FROM davidlemaitre/base:wheezy-eol
 MAINTAINER David Lemaitre
 
 # Install dependencies
