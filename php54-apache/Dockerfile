@@ -3,6 +3,9 @@ LABEL maintainer="David Lemaitre"
 
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    git-core \
+    ssl-cert \
+    unzip \
     imagemagick \
     apache2 \
     mysql-client \
