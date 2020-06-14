@@ -26,9 +26,6 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 # Enable Apache mods
 RUN a2enmod rewrite alias headers expires
 
-# Enable SSL
-RUN a2enmod ssl && a2ensite default-ssl
-
 # Set default ServerName
 RUN echo ServerName $HOSTNAME > /etc/apache2/conf.d/fqdn
 
@@ -36,7 +33,7 @@ RUN echo ServerName $HOSTNAME > /etc/apache2/conf.d/fqdn
 WORKDIR /var/www/html
 
 # Expose ports
-EXPOSE 80 443
+EXPOSE 80
 
 # Default command for container
 CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
