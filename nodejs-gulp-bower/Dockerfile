@@ -1,5 +1,5 @@
 FROM node:4.8.4-alpine
-MAINTAINER David Lemaitre
+LABEL maintainer="David Lemaitre"
 
 ENV GULP_VERSION 3.9.1
 ENV BOWER_VERSION 1.8.0

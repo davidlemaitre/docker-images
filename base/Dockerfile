@@ -1,5 +1,5 @@
 FROM debian/eol:wheezy
-MAINTAINER David Lemaitre
+LABEL maintainer="David Lemaitre"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     locales \

@@ -1,5 +1,5 @@
 FROM node:4.8.4
-MAINTAINER David Lemaitre
+LABEL maintainer="David Lemaitre"
 
 ENV GRUNT_VERSION 0.1.13
 ENV BOWER_VERSION 1.8.0
